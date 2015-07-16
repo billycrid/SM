@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Social Media</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="dashboardBody">
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Social Media</a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="color: black">
+
+    </div>
+    <!-- /.navbar-collapse -->
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li><a href="/dashboard"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> Dashboard </a></li>
+                <li class="active"><a href="/messages"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Messages <span class="sr-only">(current)</span></a></li>
+                <li><a href="/contacts"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Contacts</a></li>
+                <li><a href="/events"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Events</a></li>
+            </ul>
+            <hr>
+            <ul class="nav nav-sidebar">
+                <li><a href="/images"><span class="glyphicon glyphicon-camera" aria-hidden="true"></span> Images</a></li>
+                <li><a href="/videos"><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span> Videos</a></li>
+            </ul>
+            <hr>
+            <ul class="nav nav-sidebar">
+                <li>
+                    <span style="float:left; padding-left: 25px; padding-right: 15px;">
+                        <a href="/profile"><img id="user_imageSidebar" height="50px" width="50px"/></a>
+                    </span>
+                    <span>
+                       <a href="/profile"><span id="user_fullnameSidebar">Billy Criddle</span></a>
+                    <br>
+                        <small><a href="/editprofile">Edit Profile</a></small></small>
+                    </span>
+                </li>
+            </ul>
+            <ul class="nav nav-sidebar" style="padding-left: 25px">
+                <a href="/logout"><button class="btn btn-warning">Logout</button></a>
+                <a href="/settings"><button  class="btn btn-info">Settings</button></a>
+            </ul>
+            <hr>
+            <div class="nav nav-sidebar">
+                <div id="sidebarAdvertisement">
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <span id="content_Messages">
+
+                </span>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.msg-wrap').scrollTop($('.msg-wrap')[0].scrollHeight);
+
+        $('#popup').popover("hide");
+        $("#btnLogin").click(function(){
+            login(function(data){
+                if (data.status == "failed") {
+                    $('#popup').popover("show");
+                } else if (data.status == "success") {
+                    document.location.href='/dashboard';
+                }
+            });
+        });
+
+        $('#pinBoot').pinterest_grid({
+            no_columns: 4,
+            padding_x: 10,
+            padding_y: 10,
+            margin_bottom: 50,
+            single_column_breakpoint: 700
+        });
+    });
+</script>
+
+</body>
+</html>
