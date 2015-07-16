@@ -34,11 +34,17 @@ app.use(session({
     secret: 'keyboard cat'
 }));
 
-var connection =  db.createConnection({
+/*var connection =  db.createConnection({
     host : '127.0.0.1',
     user : 'root',
     password: '',
     database: 'main_db'
+});*/
+var connection =  db.createConnection({
+    host : 'billycrid.com',
+    user : 'billy_boy',
+    password: 'bcriddle91',
+    database: 'information_schema'
 });
 connection.connect();
 
